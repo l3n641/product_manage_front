@@ -33,29 +33,21 @@
 </template>
 
 <script>
-import { computed, watch } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 
 export default {
   setup() {
-    const items = [
-      {
-        icon: "el-icon-lx-home",
-        index: "/dashboard",
-        title: "系统首页",
-      },
-    ];
-
-    const route = useRoute();
+    const route = useRoute()
 
     const onRoutes = computed(() => {
-      return route.path;
+      return route.path
     });
 
-    const store = useStore();
-    const collapse = computed(() => store.getters.collapse);
-
+    const store = useStore()
+    const collapse = computed(() => store.getters.collapse)
+    let items = store.getters.sidebarItems
     return {
       items,
       onRoutes,

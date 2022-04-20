@@ -2,8 +2,9 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import { router as loginRouter } from "./login";
 import { router as homeRouter } from "./home";
 import Home from "/src/views/Home.vue";
+import { router as userManageRouter } from "./home";
 
-const routes = [
+export const routes = [
     {
         path: '/user',
         name: 'user',
@@ -14,7 +15,8 @@ const routes = [
                 path: '/user',
                 name: 'user',
                 meta: {
-                    title: '个人中心'
+                    title: '个人中心',
+                    hidden: true
                 },
                 component: () => import (/* webpackChunkName: "user" */ '@/views/User.vue')
             },
@@ -26,7 +28,9 @@ const routes = [
         path: '/403',
         name: '403',
         meta: {
-            title: '没有权限'
+            title: '没有权限',
+            hidden: true
+
         },
         component: () => import (/* webpackChunkName: "403" */ '@/views/403.vue')
     },
@@ -34,14 +38,15 @@ const routes = [
         path: '/404',
         name: '404',
         meta: {
-            title: '找不到页面'
+            title: '找不到页面',
+            hidden: true
         },
         component: () => import (/* webpackChunkName: "404" */ '@/views/404.vue')
     },
     {
         path: "/:catchAll(.*)", // 不识别的path自动匹配404
         redirect: '/404',
-        hidden: true
+        meta: { hidden: true }
     }
 
 ];
