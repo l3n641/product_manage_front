@@ -23,10 +23,6 @@ const routes = [
     loginRouter,
     homeRouter,
     {
-        path: '/',
-        redirect: '/dashboard'
-    },
-    {
         path: '/403',
         name: '403',
         meta: {
@@ -55,18 +51,5 @@ const router = createRouter({
     routes
 });
 
-router.beforeEach((to, from, next) => {
-    document.title = `${to.meta.title}`;
-    const role = localStorage.getItem('ms_username');
-    if (!role && to.path !== '/login') {
-        next('/login');
-    } else if (to.meta.permission) {
-        role === 'admin'
-            ? next()
-            : next('/403');
-    } else {
-        next();
-    }
-});
 
 export default router;

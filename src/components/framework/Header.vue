@@ -53,9 +53,9 @@ export default {
 
     // 用户名下拉菜单选择事件
     const router = useRouter();
-    const handleCommand = (command) => {
+    const handleCommand = async (command) => {
       if (command == "loginout") {
-        localStorage.removeItem("ms_username");
+        await store.dispatch("user/logout")
         router.push("/login");
       } else if (command == "user") {
         router.push("/user");
