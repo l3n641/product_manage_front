@@ -5,9 +5,13 @@ import store from './store'
 import installElementPlus from './plugins/element'
 import './assets/css/icon.css'
 import '@/permission' // permission control
+
+import dayjs from "dayjs"
+
 const app = createApp(App)
 installElementPlus(app)
 app
     .use(store)
     .use(router)
     .mount('#app')
+
