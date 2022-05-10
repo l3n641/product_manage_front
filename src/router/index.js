@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import { router as loginRouter } from "./login";
 import { router as homeRouter } from "./home";
 import Home from "/src/views/Home.vue";
-import { router as userManageRouter } from "./home";
+import { router as collectionProductManageRouter } from "./collectionProduct";
 
 export const routes = [
     {
@@ -24,6 +24,7 @@ export const routes = [
     },
     loginRouter,
     homeRouter,
+    collectionProductManageRouter,
     {
         path: '/403',
         name: '403',
