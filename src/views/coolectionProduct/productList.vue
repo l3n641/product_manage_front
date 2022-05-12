@@ -33,14 +33,16 @@
         <el-table-column label="供应商信息" width="200" align="center">
           <template #default="scope">
             <div class="supplier_info">
-              <div><el-tag class="ml-2" type="success">{{ scope.row.supplier.supplier_platform }}</el-tag></div>
+              <div>
+                <el-tag class="ml-2" type="success">{{ scope.row.supplier.supplier_platform }}</el-tag>
+              </div>
               <div>店铺:{{ scope.row.supplier.supplier_name }}</div>
             </div>
           </template>
         </el-table-column>
         <el-table-column label="操作" width="180" align="center">
           <template #default="scope">
-            <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button type="text" icon="el-icon-edit" @click="handleEdit( scope.row)">编辑</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -61,6 +63,7 @@
 import { ref, reactive } from "vue";
 import { timestampFormat } from "@/functions"
 import { getCollectionProduct } from "../../api/collectionProduct";
+import { useRouter } from "vue-router";
 
 
 export default {
@@ -75,6 +78,7 @@ export default {
     })
     const tableData = ref([])
     const pageTotal = ref(0)
+    const router = useRouter();
 
     // 获取表格数据
     const getData = () => {
@@ -94,12 +98,23 @@ export default {
       query.page = val
       getData()
     }
+    const handleEdit = (product) => {
+      const { href } = router.resolve({
+        path: '/collection_product_update',
+        query: {
+          collectionProductId: product.id
+        }
+      });
+      window.open(href, "_blank");
+
+    }
 
     return {
       query,
       tableData,
       pageTotal,
       timestampFormat,
+      handleEdit,
       handleSearch,
       handlePageChange,
       getData,

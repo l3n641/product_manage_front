@@ -14,5 +14,15 @@ export const router = {
             },
             component: () => import ( /* webpackChunkName: "dashboard" */ "@/views/coolectionProduct/productList.vue")
         },
+        {
+            path: "/collection_product_update",
+            name: "CollectionProductUpdate",
+            meta: {
+                title: '采集产品编辑',
+                icon: "el-icon-lx-home",
+                hidden: true
+            },
+            component: () => import ( /* webpackChunkName: "dashboard" */ "@/views/coolectionProduct/update.vue")
+        },
     ]
 }

@@ -7,3 +7,10 @@ export function getCollectionProduct(params) {
         params
     })
 }
+
+export function getCollectionProductDetail(id) {
+    return request({
+        url: '/collection_product/' + id,
+        method: 'get',
+    })
+}

@@ -22,3 +22,6 @@ export function timestampFormat(timestamp, fmt = "YYYY-mm-dd") {
     return fmt;
 }
 
+export function generateSkuCode() {
+    return Math.random().toString(36).slice(-10)
+}
